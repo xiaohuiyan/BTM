@@ -11,13 +11,13 @@ With Gibbs sampling algorithm, we can learn topics by estimate P(w|k) and P(z).
 
 More detail can be referred to the following paper:
 
-    Xiaohui Yan, Jiafeng Guo, Yanyan Lan, Xueqi Cheng. A Biterm Topic Model For Short Text. WWW2013.
+> Xiaohui Yan, Jiafeng Guo, Yanyan Lan, Xueqi Cheng. A Biterm Topic Model For Short Text. WWW2013.
 
 ## Usage ##
 
-1) Topic learning:
+1. Topic learning:
 
-    $ ./btm est <K> <W> <alpha> <beta> <n_iter> <save_step> <pt_input> <pt_outdir>
+       $ ./src/btm est <K> <W> <alpha> <beta> <n_iter> <save_step> <pt_input> <pt_outdir>
     	K	int, number of topics, like 20
     	W	int, size of vocabulary
     	alpha	double, Symmetric Dirichlet prior of P(z), like 1
@@ -27,56 +27,42 @@ More detail can be referred to the following paper:
     	pt_input	string, path of training docs
     	pt_outdir	string, output directory
 
-2) Inference topic proportions for documents, i.e., P(z|d):
+2. Inference topic proportions for documents, i.e., P(z|d):
 
-    $ ./btm inf <type> <K> <pt_input> <pt_outdir>
+        $ ./src/btm inf <type> <K> <pt_input> <pt_outdir>
     	K	int, number of topics, like 20
     	type	 string, 4 choices:sum_w, sum_b, lda, mix. sum_b is used in our paper.
     	pt_input	string, path of training docs
     	pt_outdir	string, output directory
 
-There are two scripts in "script/" to help you run a toy example in
-"data" directory.
+  There are two scripts in "script/" to help you run a toy example in "data" directory.
 
-3) run a toy example
+3. run a toy example
 
-    $ bat.sh
+       $ bat.sh
 
-4) Results display
+4. Results display
 
-    $ python script/tran.py
+       $ python script/tran.py
 
 Output the topics with top 10 words of the toy example.
 
-## Input & Output ##
+## Input & Output Format ##
 
-1 Input
+1. Input
 
-The input file contains all the training documents. Each line records
-a short text doucment, and word indexes (starts from 0) seperated by
-space. See the toy example in data/doc_wids.txt
+ The input file contains all the training documents. Each line records a short text doucment, and word indexes (starts from 0) seperated by space. See the toy example in *data/doc_wids.txt*.
 
-2 Output
+2. Output
 
-The estimation program will output into the directory "pt_ourdir":
-- pw_z.k20  a K*M matrix for P(w|z), if K=20
-- pz.k20   a K*1 matrix for P(z), if K=20
+ The estimation program will output into the directory "pt_ourdir":   
+ - pw_z.k20: a K*M matrix for P(w|z), suppose K=20   
+ - pz.k20:   a K*1 matrix for P(z), suppose K=20
 
-The inference program will produce:
-
-- pz_d.k20 a N*K matrix for P(z|d), if K=20
+ The inference program will produce:   
+ - pz_d.k20: a N*K matrix for P(z|d), suppose K=20
 
 ## History ##
+- 2012-09-25, v0.1
 
-2013-8-28     Add online BTM.
-
-2013-6-1      Add the process of single word document Inference.
-
-2013-5-6      add a doc_infer_sum_w inference procedure.
-
-2013-5-5      v0.2, add Doc and Dataset class. We change the input
-			  from biterms to word sequences. Example is the test/doc_wids.txt.
-
-2012-09-25    v0.1
-
-Feel free to contact: Xiaohui Yan(xhcloud@gmail.com)
+If there is any question, feel free to contact: [Xiaohui Yan](http://shortext.org "Xiaohui Yan")(xhcloud@gmail.com).
