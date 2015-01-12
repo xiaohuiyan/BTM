@@ -4,9 +4,9 @@
 K=20   # number of topics
 
 alpha=`echo "scale=3;50/$K"|bc`
-beta=0.01
+beta=0.005
 niter=500
-save_step=101
+save_step=501
 
 input_dir=../sample-data/
 output_dir=../output/

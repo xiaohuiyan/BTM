@@ -15,25 +15,26 @@ More detail can be referred to the following paper:
 
 ## Usage ##
 
-The code includes a complete toy example, you can run it by:
+The code includes a runnable example, you can run it by:
 
        $ script/runExample.sh
+
 It trains BTM over the documents in *sample-data/doc_info.txt* and output the topics. The doc_info.txt contains all the training documents, where each line represents one document with words separated by space as:
 > word1 word2 word3 ....
 
 (*Note: the sample data is only used for illustration of the usage of the code. It is not the data set used in the paper.*)
 
-You can easily change the paths of data files and parameters in *script/runExample.sh* to run over your own data. 
+You can change the paths of data files and parameters in *script/runExample.sh* to run over your own data. 
 
 Indeed, the *runExample.sh* processes the input documents in 4 steps.
 
 **1. Index the words in the documents**   
-   To simplified the main training procedure, we provide a python script to map each word to a unique ID (starts from 0) in the documents. 
+   To simplify the main code, we provide a python script to map each word to a unique ID (starts from 0) in the documents. 
 
     $ python script/indexDocs.py <doc_pt> <dwid_pt> <voca_pt>
-    	doc_ptinput docs to be indexed, each line is a doc with the format "word word ..."
+    	doc_pt    input docs to be indexed, each line is a doc with the format "word word ..."
     	dwid_pt   output docs after indexing, each line is a doc with the format "wordId wordId ..."
-    	voca_pt   output vocabulary file, each line is a word with the format "wordIdword"
+    	voca_pt   output vocabulary file, each line is a word with the format "wordId     word"
 
 **2. Topic learning**  
    The next step is to train the model using the documents represented by word ids.    
@@ -49,8 +50,8 @@ Indeed, the *runExample.sh* processes the input documents in 4 steps.
       model_dir	string, output directory
  
    The results will be written into the directory "model_dir":   
-   - pw_z.k20: a K*M matrix for P(w|z), suppose K=20   
-   - pz.k20:   a K*1 matrix for P(z), suppose K=20
+   - k20.pw_z: a K*M matrix for P(w|z), suppose K=20   
+   - k20.pz:   a K*1 matrix for P(z), suppose K=20
 
 **3. Inference topic proportions for documents, i.e., P(z|d)**     
    If you need to analysis the topic proportions of each documents, just run the following common to infer that using the model estimated.
@@ -62,7 +63,7 @@ Indeed, the *runExample.sh* processes the input documents in 4 steps.
       model_dir	string, output directory
 
    The result will be output to "model_dir":   
-   - pz_d.k20: a N*K matrix for P(z|d), suppose K=20
+   - k20.pz_d: a N*K matrix for P(z|d), suppose K=20
   
 **4. Results display**    
    Finally, we also provide a python script to illustrate the top words of the topics and their proportions in the collection. 

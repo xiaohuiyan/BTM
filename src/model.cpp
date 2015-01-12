@@ -106,16 +106,14 @@ void Model::compute_pz_b(Biterm& bi, Pvec<double>& pz) {
 	  pw2k = pw_b[w2];
 	}
 	else {
-	  double deno1 = W / (2 * nb_z[k] + W * beta);
-	  double deno2 = W / (2 * nb_z[k] + W * beta);
-	  pw1k = (nwz[k][w1] + beta) * deno1;
-	  pw2k = (nwz[k][w2] + beta) * deno2;
+	  pw1k = (nwz[k][w1] + beta) / (2 * nb_z[k] + W * beta);
+	  pw2k = (nwz[k][w2] + beta) / (2 * nb_z[k] + 1 + W * beta);
 	}
 	pk = (nb_z[k] + alpha) / (bs.size() + K * alpha);
 	pz[k] = pk * pw1k * pw2k;
   }
 
-  pz.normalize();
+  //pz.normalize();
 }
 
 // assign topic k to biterm i
