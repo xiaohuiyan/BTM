@@ -15,7 +15,7 @@ def read_voca(pt):
     return voca
 
 def read_pz(pt):
-    return [float(p.strip()) for p in open(pt)]
+    return [float(p) for p in open(pt).readline().split()]
     
 # voca = {wid:w,...}
 def dispTopics(pt, voca, pz):

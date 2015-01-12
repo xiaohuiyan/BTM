@@ -142,11 +142,9 @@ void Model::save_res(string dir) {
 // p(z) is determinated by the overall proportions
 // of biterms in it
 void Model::save_pz(string pt) {
-  ofstream wf(pt.c_str());  
-  for (int k = 0; k < K; k++) {
-	double pz = (nb_z[k] + alpha)/(bs.size() + K * alpha);
-	wf << pz << endl;
-  }
+  Pvec<double> pz(nb_z);
+  pz.normalize(alpha);
+  pz.write(pt);
 }
 
 void Model::save_pw_z(string pt) {
