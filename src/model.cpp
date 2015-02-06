@@ -32,6 +32,7 @@ void Model::run(string doc_pt, string res_dir) {
 }
 
 void Model::model_init() {
+  srand(time(NULL));
   // random initialize
   for (vector<Biterm>::iterator b = bs.begin(); b != bs.end(); ++b) {
 	int k = Sampler::uni_sample(K);
@@ -64,7 +65,7 @@ void Model::load_docs(string dfile) {
 }
 
 // sample procedure for ith biterm 
-double Model::update_biterm(Biterm& bi) {
+void Model::update_biterm(Biterm& bi) {
   reset_biterm_topic(bi);
   
   // compute p(z|b)
@@ -74,8 +75,6 @@ double Model::update_biterm(Biterm& bi) {
   // sample topic for biterm b
   int k = Sampler::mult_sample(pz.to_vector());
   assign_biterm_topic(bi, k);
-
-  return pz.max();
 }
 
 // reset topic assignment of biterm i

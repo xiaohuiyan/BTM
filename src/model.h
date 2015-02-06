@@ -27,13 +27,13 @@ protected:
 
   double alpha;			// hyperparameters of p(z)
   double beta;			// hyperparameters of p(w|z)
-  string dir;			// result dir
   
   // sample recorders
   Pvec<int> nb_z;	// n(b|z), size K*1
   Pmat<int> nwz;	  // n(w,z), size K*W
 
   Pvec<double> pw_b;   // the background word distribution  
+
   // If true, the topic 0 is set to a background topic that 
   // equals to the emperiacal word dsitribution. It can filter 
   // out common words
@@ -45,13 +45,12 @@ public:
 	K(K), W(W), alpha(a), beta(b), 
 	n_iter(n_iter), has_background(has_b),
 	save_step(save_step) {
-	srand(time(NULL));
 	pw_b.resize(W);
 	nwz.resize(K, W);
 	nb_z.resize(K);
   }
   
-  // run estimate and inference procedures
+  // run estimate procedures
   void run(string docs_pt, string res_dir);
   
 private:
@@ -60,7 +59,7 @@ private:
   void load_docs(string docs_pt);
   
   // update estimate of a biterm
-  double update_biterm(Biterm& bi);
+  void update_biterm(Biterm& bi);
   
   // reset topic proportions for biterm b
   void reset_biterm_topic(Biterm& bi);

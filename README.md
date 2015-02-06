@@ -19,7 +19,7 @@ The code includes a runnable example, you can run it by:
 
        $ script/runExample.sh
 
-It trains BTM over the documents in *sample-data/doc_info.txt* and output the topics. The doc_info.txt contains all the training documents, where each line represents one document with words separated by space as:
+It trains BTM over the documents in *sample-data/doc\_info.txt* and output the topics. The doc\_info.txt contains all the training documents, where each line represents one document with words separated by space as:
 > word1 word2 word3 ....
 
 (*Note: the sample data is only used for illustration of the usage of the code. It is not the data set used in the paper.*)
@@ -49,7 +49,7 @@ Indeed, the *runExample.sh* processes the input documents in 4 steps.
       docs_pt	string, path of training docs
       model_dir	string, output directory
  
-   The results will be written into the directory "model_dir":   
+   The results will be written into the directory "model\_dir":   
    - k20.pw_z: a K*M matrix for P(w|z), suppose K=20   
    - k20.pz:   a K*1 matrix for P(z), suppose K=20
 
@@ -73,6 +73,9 @@ Indeed, the *runExample.sh* processes the input documents in 4 steps.
       Kthe number of topics
       voca_ptthe vocabulary file
 
+## Related codes ##
+- [Online BTM](https://github.com/xiaohuiyan/OnlineBTM)
+- [Bursty BTM](https://github.com/xiaohuiyan/BurstyBTM)
 
 ## History ##
 - 2015-01-12, v0.5, improve the usability of the code

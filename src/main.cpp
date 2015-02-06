@@ -13,26 +13,30 @@
 using namespace std;
 
 void usage() {
-  cout << "Usage:\n"
-       << "btm est K alpha beta pt_input pt_outdir n_iter\n"
-       << "\tK\tint, number of topics, like 20\n"
-       << "\talpha\tdouble, Pymmetric Dirichlet prior of P(z), like 1.0\n"
-       << "\tbeta\tdouble, Pymmetric Dirichlet prior of P(w|z), like 0.01\n"
-       << "\tpt_input\ttraining biterms file\n"
-       << "\tpt_outdir\toutput directory\n"
-       << "btm inf K pt_input pt_outdir\n"
-       << "\tpt_input\tinference biterms file\n"
-       << "\tpt_outdir\tparameters/output directory\n";
+  cout << "Training Usage:" << endl
+       << "btm est <K> <W> <alpha> <beta> <n_iter> <save_step> <docs_pt> <model_dir>\n"
+       << "\tK  int, number of topics, like 20" << endl
+       << "\tW  int, size of vocabulary" << endl
+       << "\talpha   double, Pymmetric Dirichlet prior of P(z), like 1.0" << endl
+       << "\tbeta    double, Pymmetric Dirichlet prior of P(w|z), like 0.01" << endl
+       << "\tn_iter  int, number of iterations of Gibbs sampling" << endl
+       << "\tsave_step   int, steps to save the results" << endl
+       << "\tdocs_pt     string, path of training docs" << endl
+       << "\tmodel_dir   string, output directory" << endl
+       << "Inference Usage:" << endl
+       << "btm inf <K> <docs_pt> <model_dir>" << endl
+       << "\tK  int, number of topics, like 20" << endl
+       << "\tdocs_pt     string, path of training docs" << endl
+       << "\tmodel_dir  string, output directory" << endl;
 }
 
 int main(int argc, char* argv[]) {
-  // test_main();
-  //// load parameters from std input
   if (argc < 4) {
-    usage();
-    return 1;
-  }  
+     usage();
+     return 1;
+   }
 
+  //// load parameters from std input
   int i = 1;
   if (strcmp(argv[i++], "est")==0) {
     int K = atoi(argv[i++]);                  // topic num
@@ -56,7 +60,7 @@ int main(int argc, char* argv[]) {
     int K = atoi(argv[3]);                  // topic num
     string docs_pt(argv[4]);
     string dir(argv[5]);
-    cout << "Run infence:K=" << K << ", type " << type << " ====" << endl;
+    cout << "Run inference:K=" << K << ", type " << type << " ====" << endl;
     Infer inf(type, K);
     inf.run(docs_pt, dir);
   } else {
