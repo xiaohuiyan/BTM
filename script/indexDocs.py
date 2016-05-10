@@ -26,7 +26,6 @@ def write_w2id(res_pt):
     for w, wid in sorted(w2id.items(), key=lambda d:d[1]):
         print >>wf, '%d\t%s' % (wid, w)
         
-        
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         print 'Usage: python %s <doc_pt> <dwid_pt> <voca_pt>' % sys.argv[0]

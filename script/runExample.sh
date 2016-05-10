@@ -5,12 +5,13 @@ K=20   # number of topics
 
 alpha=`echo "scale=3;50/$K"|bc`
 beta=0.005
-niter=500
+niter=5
 save_step=501
 
 input_dir=../sample-data/
 output_dir=../output/
 model_dir=${output_dir}model/
+mkdir -p $output_dir/model 
 
 # the input docs for training
 doc_pt=${input_dir}doc_info.txt
@@ -22,8 +23,7 @@ dwid_pt=${output_dir}doc_wids.txt
 voca_pt=${output_dir}voca.txt
 python indexDocs.py $doc_pt $dwid_pt $voca_pt
 
-
-## learning parameters p(z) and p(z|w)
+## learning parameters p(z) and p(w|z)
 echo "=============== Topic Learning ============="
 W=`wc -l < $voca_pt` # vocabulary size
 make -C ../src

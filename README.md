@@ -14,10 +14,13 @@ More detail can be referred to the following paper:
 > Xiaohui Yan, Jiafeng Guo, Yanyan Lan, Xueqi Cheng. A Biterm Topic Model For Short Text. WWW2013.
 
 ## Usage ##
+The code has been test on linux. If you on windows, please install
+cygwin (with bc, wc, make).
 
 The code includes a runnable example, you can run it by:
 
-       $ script/runExample.sh
+       $ cd script
+	   $ sh runExample.sh
 
 It trains BTM over the documents in *sample-data/doc\_info.txt* and output the topics. The doc\_info.txt contains all the training documents, where each line represents one document with words separated by space as:
 > word1 word2 word3 ....
