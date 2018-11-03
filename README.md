@@ -17,7 +17,7 @@ More detail can be referred to the following paper:
 The code has been test on linux. If you on windows, please install
 cygwin (with bc, wc, make).
 
-The code includes a runnable example, you can run it by:
+The code includes a runnable example, you can run it *on Linux* by:
 
        $ cd script
 	   $ sh runExample.sh
@@ -84,4 +84,4 @@ Indeed, the *runExample.sh* processes the input documents in 4 steps.
 - 2015-01-12, v0.5, improve the usability of the code
 - 2012-09-25, v0.1
 
-If there is any question, feel free to contact: [Xiaohui Yan](http://shortext.org "Xiaohui Yan")(xhcloud@gmail.com).
+If there is any question, feel free to contact: [Xiaohui Yan](http://xiaohuiyan.github.io "Xiaohui Yan")(xhcloud@gmail.com).
